@@ -3,6 +3,22 @@
 
 ---
 
+## MARIE breakdown
+[MARIE](https://marie.js.org) - Machine Architecture that is Really Intuitive and Easy - is essentially a simulator created to help developers learn how a basic CPU can work.
+
+Each MARIE program has source code that can be compiled into 16-bit machine code.
+
+The first 4 bits are dedicated to the **instruction**, which basically says "do this". The following 12 bits represents the memory address, which completes the previous statement, saying "do it to this place".
+
+The full instruction set can be found by going [here](https://marie.js.org), and clicking on `Instruction Set` in the top right corner.
+
+However, there is an important distinction we have to make. How does MARIE hold variables?
+
+Simply put, if MARIE executes the code directly, then it will interpret the value at the memory address to be an instruction. Otherwise, if it is simply fetching a value from another address, then MARIE will interpret all 16 bits as one number.
+
+Hopefully, the information above is enough to have a basic understanding of MARIE.
+
+## The goal
 What do we do if we are given the machine code of some MARIE program, and we need to convert it to MARIE source code?
 
 Using [this](main.ipynb), we can do exactly that!

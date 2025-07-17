@@ -1,0 +1,44 @@
+Load C1
+Store Func3
+Jump Func8
+Func1, HEX 000
+Func2, HEX 000
+Func8, LoadI Func3
+SkipCond 400
+Jump Func9
+Jump Func10
+Func3, HEX 000
+Func4, HEX 000
+Func9, JnS/Adr Func5
+Output 
+Load Func3
+Add B1
+Store Func3
+Jump Func8
+Func5, HEX 000
+SkipCond 000
+Jump Func11
+Func12, Add A1
+SkipCond 800
+Jump Func12
+Jump Func13
+Func11, Subt A1
+SkipCond 000
+Jump Func11
+Add A1
+JumpI Func5
+Func13, SkipCond 400
+Subt A1
+JumpI Func5
+Func6, HEX 000
+Func7, HEX 000
+Func10, Halt 
+A1, DEC 56
+B1, DEC 1
+C1, DEC 38
+D1, DEC 3573
+E1, DEC 65142
+F1, DEC 728
+G1, DEC 63445
+H1, DEC 735
+I1, DEC 64233

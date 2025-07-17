@@ -58,7 +58,7 @@ If you wish to read from a custom file, simply run:
 python converter.py path-to-file.txt
 ```
 
-## Flags
+### Flags
 Additionally, you can use `-o` or `--output` to specify the output file:
 
 ```bash

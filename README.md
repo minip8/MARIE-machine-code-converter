@@ -23,8 +23,56 @@ What do we do if we are given the machine code of some MARIE program, and we nee
 
 Using [this](converter/converter.py), we can do exactly that!
 
+## How to use
+### Downloading
+To run this program, first download or clone the repository.
+If you chose to download, extract the `.zip` file.
 
-## The process
+### Changing directories
+Now, open your favourite terminal. Note that if you're using bash, use `python3` instead of `python` in your command line.
+
+First, `cd` into wherever you located the directory.
+
+```bash
+cd path-to-directory
+```
+
+Now, `cd` into the `converter` directory.
+```bash
+cd converter
+```
+
+### Usage
+Now that you're in the proper directory, we can run the `converter.py` file with ease, with the command below.
+
+```bash
+python converter.py
+```
+
+**NOTE: The default input file path is [machine_code/machine_code.txt](machine_code/machine_code.txt) and the default output file path is [source_code/MARIE_source_code.txt](source_code/MARIE_source_code.txt).**
+
+
+If you wish to read from a custom file, simply run:
+
+```bash
+python converter.py path-to-file.txt
+```
+
+## Flags
+Additionally, you can use `-o` or `--output` to specify the output file:
+
+```bash
+python converter.py path-to-file.txt -o path-to-output-file.txt
+```
+
+If you wish to print the output to `stdout`, simply add the `-v` or `--verbose` flag:
+
+```bash
+python converter.py -v
+```
+
+
+## The process behind making this possible
 Below uses [this machine code](machine_code/machine_code.txt) as a reference.
 
 

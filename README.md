@@ -21,15 +21,15 @@ Hopefully, the information above is enough to have a basic understanding of MARI
 ## The goal
 What do we do if we are given the machine code of some MARIE program, and we need to convert it to MARIE source code?
 
-Using [this](main.ipynb), we can do exactly that!
+Using [this](converter/converter.py), we can do exactly that!
 
 
 ## The process
-Below uses [this machine code](machine_code.txt) as a reference.
+Below uses [this machine code](machine_code/machine_code.txt) as a reference.
 
 
 ### Find the `HALT` AKA `7000`
-Given [this machine code](machine_code.txt), we first make one crucial observation: the `HALT` instruction lies on line 35.
+Given [this machine code](machine_code/machine_code.txt), we first make one crucial observation: the `HALT` instruction lies on line 35.
 
 We can call this the `pivot`.
 
@@ -58,7 +58,7 @@ This program should be pretty fool proof if the machine code provided follows MA
 However, it is still important that the source code is double checked by compiling it in [MARIE's online IDE](https://marie.js.org), and cross-checking with the machine code that it generates.<br>
 It should be the same as your own machine code.
 
-Something also noted in the start of [the notebook](main.ipynb) is that the instruction pair `(Jns, Adr)` has the same instruction in machine code: `6`.<br>
+Something also noted in the start of [the program](converter/converter.py) is that the instruction pair `(Jns, Adr)` has the same instruction in machine code: `6`.<br>
 The program will output `Jns/Adr` when this happens. It is up to you to decide which is more suitable for the context, though using either will work.
 
 Obviously, the variable and function names will also not have much meaning, so it is again, up to you, to decide what meaningful names are suitable in the context of the program.

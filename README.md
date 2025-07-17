@@ -106,7 +106,7 @@ This program should be pretty fool proof if the machine code provided follows MA
 However, it is still important that the source code is double checked by compiling it in [MARIE's online IDE](https://marie.js.org), and cross-checking with the machine code that it generates.<br>
 It should be the same as your own machine code.
 
-Something also noted in the start of [the program](converter/converter.py) is that the instruction pair `(Jns, Adr)` has the same instruction in machine code: `6`.<br>
+Something also to note is that the instruction pair `(Jns, Adr)` has the same HEX instruction in machine code: `6`.<br>
 The program will output `Jns/Adr` when this happens. It is up to you to decide which is more suitable for the context, though using either will work.
 
 Obviously, the variable and function names will also not have much meaning, so it is again, up to you, to decide what meaningful names are suitable in the context of the program.

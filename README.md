@@ -23,6 +23,47 @@ What do we do if we are given the machine code of some MARIE program, and we nee
 
 Using [this](converter/converter.py), we can do exactly that!
 
+
+## The process behind making this possible
+Below uses [this machine code](machine_code/machine_code.txt) as a reference.
+
+
+### Find the `HALT` AKA `7000`
+Given [this machine code](machine_code/machine_code.txt), we first make one crucial observation: the `HALT` instruction lies on line 35.
+
+We can call this the `pivot`.
+
+
+### Variables
+As per the convention of MARIE source code, all variables, both constant and non-constant, will be placed **after** the `HALT` instruction.<br>
+This observation allows us to assign variables to each value that appears after the `HALT` instruction.
+
+We can now assign each address after the `pivot` to a variable name, starting from `Var1`.
+
+### Subroutines AKA functions
+Whenever we `JnS` or `Jump` to some address, that address is most likely the start of some function.
+
+So, we can find every destination of a `JnS` or `Jump`, and assign a function name to that address, starting from `Func1`, **given that the target address does not contain the `Halt` instruction**.
+
+
+### Putting it all together
+Now that we know when an address corresponds to a variable or a function, we can respectively replace each instance of each address with the corresponding variable or function name.
+
+Finally, we can neatly format the final data for a neat output!
+
+
+### Other important stuff
+This program should be pretty fool proof if the machine code provided follows MARIE conventions. Of course, I haven't extensively tested it, but it seems to have worked for my own use, as well as some of my friends' usage too.
+
+However, it is still important that the source code is double checked by compiling it in [MARIE's online IDE](https://marie.js.org), and cross-checking with the machine code that it generates.<br>
+It should be the same as your own machine code.
+
+Something also noted in the start of [the program](converter/converter.py) is that the instruction pair `(Jns, Adr)` has the same instruction in machine code: `6`.<br>
+The program will output `Jns/Adr` when this happens. It is up to you to decide which is more suitable for the context, though using either will work.
+
+Obviously, the variable and function names will also not have much meaning, so it is again, up to you, to decide what meaningful names are suitable in the context of the program.
+
+
 ## How to use
 ### Downloading
 To run this program, first download or clone the repository.
@@ -70,43 +111,3 @@ If you wish to print the output to `stdout`, simply add the `-v` or `--verbose` 
 ```bash
 python converter.py -v
 ```
-
-
-## The process behind making this possible
-Below uses [this machine code](machine_code/machine_code.txt) as a reference.
-
-
-### Find the `HALT` AKA `7000`
-Given [this machine code](machine_code/machine_code.txt), we first make one crucial observation: the `HALT` instruction lies on line 35.
-
-We can call this the `pivot`.
-
-
-### Variables
-As per the convention of MARIE source code, all variables, both constant and non-constant, will be placed **after** the `HALT` instruction.<br>
-This observation allows us to assign variables to each value that appears after the `HALT` instruction.
-
-We can now assign each address after the `pivot` to a variable name, starting from `Var1`.
-
-### Subroutines AKA functions
-Whenever we `JnS` or `Jump` to some address, that address is most likely the start of some function.
-
-So, we can find every destination of a `JnS` or `Jump`, and assign a function name to that address, starting from `Func1`, **given that the target address does not contain the `Halt` instruction**.
-
-
-### Putting it all together
-Now that we know when an address corresponds to a variable or a function, we can respectively replace each instance of each address with the corresponding variable or function name.
-
-Finally, we can neatly format the final data for a neat output!
-
-
-### Other important stuff
-This program should be pretty fool proof if the machine code provided follows MARIE conventions. Of course, I haven't extensively tested it, but it seems to have worked for my own use, as well as some of my friends' usage too.
-
-However, it is still important that the source code is double checked by compiling it in [MARIE's online IDE](https://marie.js.org), and cross-checking with the machine code that it generates.<br>
-It should be the same as your own machine code.
-
-Something also noted in the start of [the program](converter/converter.py) is that the instruction pair `(Jns, Adr)` has the same instruction in machine code: `6`.<br>
-The program will output `Jns/Adr` when this happens. It is up to you to decide which is more suitable for the context, though using either will work.
-
-Obviously, the variable and function names will also not have much meaning, so it is again, up to you, to decide what meaningful names are suitable in the context of the program.
